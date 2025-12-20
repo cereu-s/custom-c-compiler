@@ -9,19 +9,19 @@ A DIY compiler for a subset of the C language.
 ## Key components
 **The main workflow of a compiler**
 
-    High level input 
+    [High level input]
             |
             V
-    Lexical analysis (tokenization) 
+    [Lexical analysis]  (tokenization) 
             |
             V
-    Syntactical analysis (grammar)
+    [Syntactical analysis]  (grammar)
             |
             V
-    Semantics analysis
+    [Semantics analysis]
             |
             V
-    Translation (code generation)
+    [Translation]  (code generation)
 
 
 
