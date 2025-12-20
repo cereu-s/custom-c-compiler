@@ -3,7 +3,7 @@ A DIY compiler for a subset of the C language.
 
 ## Objective
 - Building a self compiling compiler - a compiler for C, written in C.
-- Target architecture: x86.
+- Target architecture: x86 - 64 & 32 bit systems.
 - focus on implementation and practice over theory.
 
 ## Key components
