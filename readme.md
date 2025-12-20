@@ -1,0 +1,32 @@
+# Custom C compiler
+A DIY compiler for a subset of the C language.
+
+## Objective
+- Building a self compiling compiler - a compiler for C, written in C.
+- Target architecture: x86.
+- focus on implementation and practice over theory.
+
+## Key components
+**The main workflow of a compiler**
+
+    High level input 
+            |
+            V
+    Lexical analysis (tokenization) 
+            |
+            V
+    Syntactical analysis (grammar)
+            |
+            V
+    Semantics analysis
+            |
+            V
+    Translation (code generation)
+
+
+
+Therefore, the key components that will be implemented are as follows:
+1. Parse / tokenizer
+2. Lexer
+3. Semantic analyzer
+4. Translator
