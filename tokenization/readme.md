@@ -279,3 +279,8 @@ token: 'integer'         value: 12
 token: '*'
 unrecognized char 't' on line 3
 ```
+<br><hr>
+
+
+
+Go to next chapter: [token parsing](../parsing/readme.md).
