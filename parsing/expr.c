@@ -36,12 +36,12 @@ static struct ASTNode *primary(void)
         // scans next operation token
         scan(&token);
     }
-    else if (token.token == T_EOF)
-    {
-        // empty input stream
-        printf("empty file\n");
-        exit(0);
-    }
+    // else if (token.token == T_EOF)
+    // {
+    //     // empty input stream
+    //     printf("empty file\n");
+    //     exit(0);
+    // }
     else
     {
         fprintf(stderr, "syntax error on line %d\n", line);
