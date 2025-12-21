@@ -1,5 +1,6 @@
 # Custom C compiler
-A DIY compiler for a subset of the C language.
+A DIY compiler for a subset of the C language. 
+This repository is based on the (ACWJ)[https://github.com/DoctorWkt/acwj] repository by (DoctorWkt)[https://github.com/DoctorWkt].
 
 ## Objective
 - Building a self compiling compiler - a compiler for C, written in C.
@@ -35,5 +36,6 @@ Therefore, the key components that will be implemented are as follows:
 4. Translator
 
 ## Chapters
-- [Tokenization](./tokenization/readme.md)
-
+- [tokenization](./tokenization/readme.md)
+- [parsing](./parsing/readme.md)
+- [operator precedence](./operator%20precedence/readme.md)
