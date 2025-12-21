@@ -283,4 +283,4 @@ unrecognized char 't' on line 3
 
 
 
-Go to next chapter: [token parsing](../parsing/readme.md).
+Next chapter [token parsing](../parsing/readme.md).
