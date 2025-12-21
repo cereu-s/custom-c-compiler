@@ -2,46 +2,44 @@
 #include "data.h"
 #include "decl.h"
 
-// coverts token types to AST operations
-int arithOp(int token)
+
+// token to AST operation conversion
+static int ASTop(int token)
 {
     switch (token)
     {
     case T_PLUS:
-        return (A_ADD);
+        return A_ADD;
     case T_MINUS:
-        return (A_SUB);
+        return A_SUB;
     case T_STAR:
-        return (A_MUL);
+        return A_MUL;
     case T_SLASH:
-        return (A_DIV);
+        return A_DIV;
 
+    case T_INTLIT:
+        return A_INTLIT;
+    
     default:
-        fprintf(stderr, "unknown AST type in arithOp() on line %d\n", line);
+        fprintf(stderr, "unknown token in ASTop() on line %d\n", line);
         exit(1);
     }
 }
 
-// scans a primary token and returns a leaf AST node
-// NOTE: the primary token is always an INTLIT
 
-static struct ASTNode *primary(void)
+// scan a primary token
+// NOTE: primary token must be INTLIT
+static struct ASTnode *primary(void)
 {
-    struct ASTNode *n;
+    struct ASTnode *n;
 
     if (token.token == T_INTLIT)
     {
-        n = mkASTleafNode(A_INTLIT, token.intValue);
+        n = mkASTLeafNode(A_INTLIT, token.intValue);
 
-        // scans next operation token
+        // scan next operation token
         scan(&token);
     }
-    // else if (token.token == T_EOF)
-    // {
-    //     // empty input stream
-    //     printf("empty file\n");
-    //     exit(0);
-    // }
     else
     {
         fprintf(stderr, "syntax error on line %d\n", line);
@@ -51,30 +49,26 @@ static struct ASTNode *primary(void)
     return (n);
 }
 
-
-struct ASTNode *binExpr(void)
+struct ASTnode *ASTgen(void)
 {
-    struct ASTNode *n, *left, *right;
+    struct ASTnode *n, *left, *right;
 
-    // get the primary token on the left branch
     left = primary();
 
-    // reached end of file
+    // end of file reached
     if (token.token == T_EOF)
     {
         return (left);
     }
 
-    int op = arithOp(token.token);
+    int op = ASTop(token.token);
 
-    // scans next INTLIT token
+    // scan next INTLINT
     scan(&token);
 
-    // recursively parse the right branch
-    right = binExpr();
+    right = ASTgen();
 
-    // generate an AST node using left and right branch
-    n = mkASTNode(op, left, right, 0);
+    n = mkASTnode(op, left, right, 0);
 
     return (n);
 }
