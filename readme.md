@@ -33,3 +33,7 @@ Therefore, the key components that will be implemented are as follows:
 2. Lexer
 3. Semantic analyzer
 4. Translator
+
+## Chapters
+- [Tokenization](./tokenization/readme.md)
+
