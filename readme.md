@@ -1,7 +1,7 @@
 # Custom C compiler
 A DIY compiler for a subset of the C language. 
 <br>
-This repository is based on the (ACWJ)[https://github.com/DoctorWkt/acwj] repository by (DoctorWkt)[https://github.com/DoctorWkt].
+This repository is based on the [ACWJ](https://github.com/DoctorWkt/acwj) repository by [DoctorWkt](https://github.com/DoctorWkt).
 
 ## Objective
 - Building a self compiling compiler - a compiler for C, written in C.
