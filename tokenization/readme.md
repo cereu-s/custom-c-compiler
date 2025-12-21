@@ -211,7 +211,7 @@ void scanFile(void)
 ```
 
 
-## testing
+## Testing
 
 input: `in01`
 
