@@ -6,7 +6,7 @@
 
 // generic AST node generator
 struct ASTnode *mkASTnode(int op, struct ASTnode *left, struct ASTnode *right, int intValue)
-{
+{ 
     struct ASTnode *n;
 
     // dynamic memory allocation
