@@ -9,6 +9,8 @@ A DIY compiler for a subset of the C language.
 ## Key components
 **The main workflow of a compiler**
 
+```
+
     [High level input]
             |
             V
@@ -22,11 +24,12 @@ A DIY compiler for a subset of the C language.
             |
             V
     [Translation]  (code generation)
+```
 
-
+<br>
 
 Therefore, the key components that will be implemented are as follows:
-1. Parse / tokenizer
+1. Parser / tokenizer
 2. Lexer
 3. Semantic analyzer
 4. Translator
