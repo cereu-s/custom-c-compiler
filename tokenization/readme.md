@@ -1,5 +1,7 @@
 # Scanning tokens from input stream
 
+At first, we start simple. For now, our compiler only recognizes integers and four basic math operators (+,-,*, /). It will interpret a input stream with a single statement with the given terminals.
+
 ## Structure definition
 at first we define the structure for token
  in `def.h`
