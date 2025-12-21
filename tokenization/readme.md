@@ -1,4 +1,4 @@
-# Parsing tokens from input stream
+# Scanning tokens from input stream
 
 ## Structure definition
 at first we define the structure for token
