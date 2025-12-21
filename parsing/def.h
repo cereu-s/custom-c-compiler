@@ -31,10 +31,16 @@ enum
     A_INTLIT
 };
 
-// AST node structure
-struct ASTNode
+// AST structure
+struct ASTnode
 {
-    struct ASTNode *left, *right;
+    // type of AST node
     int op;
+
+    // child nodes
+    struct ASTnode *left;
+    struct ASTnode *right;
+
+    // value, if any
     int intValue;
 };
