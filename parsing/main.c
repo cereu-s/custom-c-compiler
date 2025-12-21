@@ -40,21 +40,18 @@ void openFile(char* fileName)
 }
 
 
-
-// string for each token
-char *tokenStr[] = {"+", "-", "*", "/", "integer"};
-
-// scans the file
+// parses file
 void scanFile(void)
 {
-    // scanning initial token
+    // get initial token
     scan(&token);
 
-    // creating AST tree
-    struct ASTNode *n = binExpr();
+    // generate AST tree
+    struct ASTnode *n = ASTgen();
 
-    // interpreting AST tree
-    int result = interpretAST(n);
+    // interpret AST tree
+    int result = ASTinterpret(n);
+
     printf("result: %d\n", result);
 }
 
