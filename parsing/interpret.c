@@ -2,35 +2,34 @@
 #include "data.h"
 #include "decl.h"
 
-char *ASTop[] = {"+", "-", "*", "/"};
+// terminals to be printed to the output stream
+char* ASTtok[] = {"+", "-", "*", "/"};
 
-int interpretAST(struct ASTNode *n)
+int ASTinterpret(struct ASTnode *n)
 {
     int left, right;
 
-    // if left node, recursively gets the left value
+    // if left node, recursively get the value
     if (n->left)
     {
-        left = interpretAST(n->left);
+        left = ASTinterpret(n->left);
     }
 
-    // if right node, recursively gets the left value
+    // if right node, recursively get the value
     if (n->right)
     {
-        right = interpretAST(n->right);
+        right = ASTinterpret(n->right);
     }
 
-    // printing operations on the output stream
     if (n->op == A_INTLIT)
     {
-        printf("int %d\n", n->intValue);
+        printf("INT \t%d\n", n->intValue);
     }
     else
     {
-        printf("%d %s %d\n", left, ASTop[n->op], right);
+        printf("%d %s %d\n", left, ASTtok[n->op], right);
     }
 
-    // operation output
     switch (n->op)
     {
     case A_ADD:
@@ -43,7 +42,7 @@ int interpretAST(struct ASTNode *n)
         return left / right;
 
     case A_INTLIT:
-        return n->intValue;
+        return (n->intValue);
     
     default:
         fprintf(stderr, "unknown AST operation %d\n", n->op);
