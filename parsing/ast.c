@@ -2,19 +2,17 @@
 #include "data.h"
 #include "decl.h"
 
-// AST node generator function definitions
-
 
 
 // generic AST node generator
-struct ASTNode *mkASTNode(int op, struct ASTNode *left, struct ASTNode *right, int intValue)
+struct ASTnode *mkASTnode(int op, struct ASTnode *left, struct ASTnode *right, int intValue)
 {
-    struct ASTNode *n;
+    struct ASTnode *n;
 
     // dynamic memory allocation
-    n = (struct ASTNode *)malloc(sizeof(struct ASTNode));
+    n = (struct ASTnode *)malloc(sizeof(struct ASTnode));
 
-    // assigning values
+    // data entry
     n->op = op;
 
     n->left = left;
@@ -25,14 +23,22 @@ struct ASTNode *mkASTNode(int op, struct ASTNode *left, struct ASTNode *right, i
     return (n);
 }
 
-// leaf AST node generator
-struct ASTNode *mkASTleafNode(int op, int intValue)
+
+
+// AST leaf node generator function
+struct ASTnode *mkASTLeafNode(int op, int intValue)
 {
-    return mkASTNode(op, NULL, NULL, intValue);
+    struct ASTnode *n;
+    n = mkASTnode(op, NULL, NULL, intValue);
+    return (n);
 }
 
-// unary AST node generator
-struct ASTNode *mkASTUnaryNode(int op, struct ASTNode *left, int intValue)
+
+
+// AST unary node generator function
+struct ASTnode *mkASTUnaryNode(int op,  struct ASTnode *left)
 {
-    return mkASTNode(op, left, NULL, intValue);
+    struct ASTnode *n;
+    n = mkASTnode(op, left, NULL, 0);
+    return (n);
 }
