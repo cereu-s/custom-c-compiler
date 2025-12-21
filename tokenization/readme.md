@@ -186,7 +186,7 @@ int scan(struct Token *t)
 
 <br><hr>
 
-in the `main.c` file, we use the **scanFile** function to parse each valid token and print it in the output stream.
+in the `main.c` file, we use the `scanFile()` function to parse each valid token and print it in the output stream.
 
 ```c
 char *tokenStr[] = {"+", "-", "*", "/", "integer"};
