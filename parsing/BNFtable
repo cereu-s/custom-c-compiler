@@ -1,9 +1,0 @@
-<Expression> :    <Number>
-                | <Expression> '+' <Expression>
-                | <Expression> '-' <Expression>
-                | <Expression> '*' <Expression>
-                | <Expression> '/' <Expression>
-                ;
-
-<Number> :        T_INTLIT
-                ;                
