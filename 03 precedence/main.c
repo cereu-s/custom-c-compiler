@@ -42,7 +42,7 @@ static void scanFile(void)
     scan(&token);
 
     // generating AST tree
-    struct ASTnode *n = treeGen();
+    struct ASTnode *n = additive_expr();
 
     // interpreting AST tree
     int ans = ASTinterpreter(n);

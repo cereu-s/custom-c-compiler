@@ -8,7 +8,7 @@ struct ASTnode *mkASTLeafNode(int op, int intValue);
 struct ASTnode *mkASTUnaryNode(int op, struct ASTnode *left, int intValue);
 
 // AST tree generator
-struct ASTnode *treeGen(void);
+struct ASTnode *additive_expr(void);
 
 // tree interpreter
 int ASTinterpreter(struct ASTnode *t);
