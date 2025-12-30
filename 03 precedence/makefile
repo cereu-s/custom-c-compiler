@@ -21,4 +21,3 @@ run3: $(TARGET) in03
 
 clean: 
 	rm -rf *.o $(TARGET)
-	
