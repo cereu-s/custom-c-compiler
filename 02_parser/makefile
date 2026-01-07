@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Wall -g
-TARGET = scanner
+TARGET = parser
 
-$(TARGET): main.c scan.c
-	$(CC) $(CFLAGS) -o $(TARGET) main.c scan.c
+$(TARGET): main.c scan.c ast.c tree.c interpret.c
+	$(CC) $(CFLAGS) -o $(TARGET) main.c scan.c ast.c tree.c interpret.c
 
 run1: $(TARGET) in01
 	./$(TARGET) in01
