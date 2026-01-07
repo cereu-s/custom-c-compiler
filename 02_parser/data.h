@@ -7,6 +7,9 @@
 
 
 // global variable
+;
 extern_ int putback;
 extern_ int line;
 extern_ FILE *inFile;
+
+extern_ struct Token token;
