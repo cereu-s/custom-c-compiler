@@ -95,10 +95,9 @@ int scan(struct Token *tok)
     switch (ch)
     {
     case EOF:
-        // reached end of file
-        // no token was found
-        return (0);
-    
+        tok->token = T_EOF;
+        break;
+        
     case '+':
         tok->token = T_PLUS;
         break;
