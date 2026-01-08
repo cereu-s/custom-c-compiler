@@ -3,5 +3,7 @@
                 | <expression> - <expression>
                 | <expression> * <expression>
                 | <expression> / <expression>
+                ;
 
-<number> ::= T_INTLIT
+<number> ::=  T_INTLIT
+            ;
