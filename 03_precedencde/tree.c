@@ -18,7 +18,7 @@ static int ASTop(int tok)
 
     case T_INTLIT:
         return A_INTLIT;
-    
+
     default:
         fprintf(stderr, "cannot convert token: '%c' to AST operation in ASTop()\n", tok);
         exit(1);
@@ -30,6 +30,9 @@ static int ASTop(int tok)
 static struct ASTnode *primary(void)
 {
     struct ASTnode *node;
+
+    // logic testing
+    // printf("token: %d\t value: %d\n", token.token, token.intValue);
 
     if (token.token == T_INTLIT)
     {
@@ -49,35 +52,86 @@ static struct ASTnode *primary(void)
     }
 }
 
-struct ASTnode *ASTgen(void)
+// multipicative exprexssion tree generator
+static struct ASTnode *multiplicativeExpr(void)
 {
-    struct ASTnode *node, *left, *right;
+    struct ASTnode *left, *right;
 
-    // gets the first primary token in the left child
+    // gets a primary token on left child
     left = primary();
 
     // gets the next operational token
     scan(&token);
 
     // reached end of file
-    if(token.token == T_EOF)
+    if (token.token == T_EOF)
     {
-        // return the left child
         return left;
     }
 
-    // stores the current operation (convert from token to AST operation)
-    int op = ASTop(token.token);
+    // parses a whole multiplicative expr recursively and generates tree
+    while (token.token == T_STAR || token.token == T_SLASH)
+    {
 
-    // gets the next primary token for next iteration of the recursive call
-    scan(&token);
+        // stores the current operation
+        int op = ASTop(token.token);
 
-    // recursively gets the rest of the tree in the right child
-    right = ASTgen();
+        // scans the next primary token
+        scan(&token);
 
-    // generate operational AST node with left and right child as operands
-    // NOTE: since operational AST node, intvalue is NA
-    node = mkASTnode(op , left, right, 0);
+        // gets the right child recursively
+        right = multiplicativeExpr();
 
-    return (node);
+        // generates tree on the left child
+        left = mkASTnode(op, left, right, 0);
+
+        // reached end of file
+        if (token.token == T_EOF)
+        {
+            break;
+        }
+    }
+
+    // at this level, an extra operational token was scanned
+    // which is either additive operator or EOF
+
+    return (left);
+}
+
+// additive expression tree generator
+struct ASTnode *additiveExpr(void)
+{
+    struct ASTnode *left, *right;
+
+    left = multiplicativeExpr();
+
+    // reached end of file
+    if (token.token == T_EOF)
+    {
+        return (left);
+    }
+
+    while (1)
+    {
+
+        // stores current operation
+        // NOTE: at this level, the operator is always an additive opeartor
+        int op = ASTop(token.token);
+
+        // scans the next primary token
+        scan(&token);
+
+        // recursively gets the right child
+        right = multiplicativeExpr();
+
+        // merges into left child
+        left = mkASTnode(op, left, right, 0);
+
+        if (token.token == T_EOF)
+        {
+            break;
+        }
+    }
+
+    return (left);
 }
